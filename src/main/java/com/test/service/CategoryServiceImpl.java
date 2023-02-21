@@ -22,9 +22,15 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public List<Category> getAllCategory() {
+	public List<Category> getAllCategory(Integer pageNumber, Integer pageSize) {
 		
-		return this.categoryRepository.findAll();
+		Pageable p=PageRequest.of(pageNumber, pageSize);
+		
+		Page<Category> pagePost = this.categoryRepository.findAll(p);
+		
+		 List<Category> content = pagePost.getContent();
+		
+		 return content;
 	}
 
 	@Override
