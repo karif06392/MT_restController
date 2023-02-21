@@ -25,9 +25,13 @@ public class ProductServiceImpl implements ProductService{
 	@Autowired
 	
 	@Override
-	public List<Product> getAllProducts() {
+	public Product addProduct(int cid, Product product) {
 		
-		return this.productRepository.findAll();
+		Category category = this.categoryRepository.findById(cid);
+		
+		product.setCategory(category);
+		
+		return this.productRepository.save(product);
 	}
 
 	@Override
