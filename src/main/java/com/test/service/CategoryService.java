@@ -10,7 +10,7 @@ public interface CategoryService  {
 
 	Category createCategory(Category category);
 
-	List<Category> getAllCategory();
+	List<Category> getAllCategory(Integer pageNumber, Integer pageSize);
 
 	Category getCategoryById(int cid);
 
