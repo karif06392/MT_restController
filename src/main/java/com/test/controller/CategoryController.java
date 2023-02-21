@@ -45,12 +45,16 @@ public class CategoryController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<Category>> getAllCategory() {
+	public ResponseEntity<List<Category>> getAllCategory(
+			@RequestParam(value = "pageNumber",defaultValue = "0",required = false) Integer pageNumber,
+			@RequestParam(value = "pageSize",defaultValue = "5",required = false) Integer pageSize
+			) {
 		
-		List<Category> list = this.categoryService.getAllCategory();
+		List<Category> list = this.categoryService.getAllCategory(pageNumber,pageSize);
 		System.out.println(list);
 		return ResponseEntity.status(HttpStatus.CREATED).body(list);
 	}
+
 	
 	@GetMapping("/{cid}")
 	public ResponseEntity<Category> getCategory(@PathVariable("cid") int cid){
