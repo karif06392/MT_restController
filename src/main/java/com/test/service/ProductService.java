@@ -7,7 +7,7 @@ import com.test.entities.Product;
 
 public interface ProductService {
 
-		public List<Product> getAllProducts();
+		public List<Product> getAllProducts(Integer pageNumber, Integer pageSize);
 
 		public Product addProduct(int cid, Product product);
 
